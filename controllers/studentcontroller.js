@@ -58,7 +58,13 @@ async function updateStudent(req,res){
         student.adharCardNo=req.body.adharCardNo;
         student.mobileNo=req.body.mobileNo;
         await student.save();
-        res.end("<h1>Student has been update sucessfully</h1>")
+        // res.end("<h1>Student has been update sucessfully</h1>")
+        let students = await Student.find({})
+        res.render('studentlist',{
+            students:students
+    
+        })
+
     }catch(err){
         console.error(err);
     }
