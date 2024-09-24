@@ -47,10 +47,6 @@ async function updateStudent(req,res){
         // console.log(id);
         let student = await Student.findOne({_id: id });
         console.log(student,'student')
-        // res.send(student)
-        // res.render('studentforupdate',{
-        //     student:student
-        // })
         student.rollNo=req.body.rollNo;
         student.firstName=req.body.firstName;
         student.lastName=req.body.lastName;
@@ -58,7 +54,6 @@ async function updateStudent(req,res){
         student.adharCardNo=req.body.adharCardNo;
         student.mobileNo=req.body.mobileNo;
         await student.save();
-        // res.end("<h1>Student has been update sucessfully</h1>")
         let students = await Student.find({})
         res.render('studentlist',{
             students:students
@@ -69,7 +64,22 @@ async function updateStudent(req,res){
         console.error(err);
     }
 }
+async function deleteStudent(req, res) {
+    try {
+        let id = req.params.id;
+        await Student.deleteOne({_id: id});
+        let students = await Student.find({})
+        res.render('studentlist',{
+            students:students
+    
+        })
+        
+    } catch (err) {
+        console.error(err);
+    }
+ 
+}
 
 module.exports={
-    addStudent ,getStudents,getStudentForEdit,updateStudent
+    addStudent ,getStudents,getStudentForEdit,updateStudent,deleteStudent
 }

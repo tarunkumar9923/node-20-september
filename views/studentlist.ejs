@@ -79,140 +79,154 @@
 
 <%- include('./base/header.ejs') %>
 
-<style>
-    /* General Styling */
-    body {
-        background-color: #f4f7f6;
-        font-family: 'Arial', sans-serif;
-    }
+    <style>
+        /* General Styling */
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Arial', sans-serif;
+        }
 
-    /* Modern Table Styling */
-    .modern-table {
-        width: 100%;
-        border-collapse: separate;
-        border-spacing: 0;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        border-radius: 10px;
-        background-color: #fff;
-    }
+        /* Modern Table Styling */
+        .modern-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: #fff;
+        }
 
-    .modern-table thead th {
-        background: linear-gradient(135deg, #007bff, #00c6ff);
-        color: white;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 16px;
-        padding: 16px;
-    }
+        .modern-table thead th {
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            padding: 16px;
+        }
 
-    .modern-table tbody tr {
-        transition: background 0.3s ease-in-out, transform 0.2s;
-    }
+        .modern-table tbody tr {
+            transition: background 0.3s ease-in-out, transform 0.2s;
+        }
 
-    .modern-table tbody tr:nth-child(even) {
-        background-color: #f8f9fa;
-    }
+        .modern-table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
 
-    .modern-table tbody td {
-        padding: 12px 20px;
-        text-align: center;
-        color: #333;
-        font-size: 14px;
-    }
+        .modern-table tbody td {
+            padding: 12px 20px;
+            text-align: center;
+            color: #333;
+            font-size: 14px;
+        }
 
-    .modern-table tbody tr:hover {
-        background-color: #e8f7ff;
-        transform: translateY(-5px);
-        cursor: pointer;
-    }
+        .modern-table tbody tr:hover {
+            background-color: #e8f7ff;
+            transform: translateY(-5px);
+            cursor: pointer;
+        }
 
-    /* Rounded corners for table cells */
-    .modern-table tbody td:first-child {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
+        /* Rounded corners for table cells */
+        .modern-table tbody td:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
 
-    .modern-table tbody td:last-child {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
+        .modern-table tbody td:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
 
-    /* Shadow and Border for Responsiveness */
-    .table-responsive {
-        margin-top: 40px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        overflow: hidden;
-    }
+        /* Shadow and Border for Responsiveness */
+        .table-responsive {
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
-    /* Container Styling */
-    .container {
-        margin: 40px auto;
-        max-width: 1200px;
-        padding: 20px;
-    }
+        /* Container Styling */
+        .container {
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
 
-    /* Button to Add Dynamism */
-    .btn-modern {
-        display: inline-block;
-        padding: 12px 24px;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        border: none;
-        border-radius: 8px;
-        background: linear-gradient(135deg, #28a745, #85d744);
-        color: white;
-        cursor: pointer;
-        transition: transform 0.2s ease-in-out;
-    }
+        /* Button to Add Dynamism */
+        .btn-modern {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #28a745, #85d744);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
 
-    .btn-modern:hover {
-        transform: scale(1.05);
-        background: linear-gradient(135deg, #218838, #78c43e);
-    }
+        .btn-modern:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #218838, #78c43e);
+        }
+    </style>
 
-</style>
-
-<div class="container">
-    <div class="row">
-        <div class="table-responsive">
-            <table class="modern-table">
-                <thead>
-                    <tr>
-                        <th>Roll No</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Father's Name</th>
-                        <th>Aadhar Card</th>
-                        <th>Mobile No</th>
-                        <th>Actions</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <% students.forEach((student) => { %>
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="modern-table">
+                    <thead>
                         <tr>
-                            <td><%= student.rollNo %></td>
-                            <td><%= student.firstName %></td>
-                            <td><%= student.lastName %></td>
-                            <td><%= student.fatherName %></td>
-                            <td><%= student.adharCardNo %></td>
-                            <td><%= student.mobileNo %></td>
-                            <td><a href="/edit/student/page/<%= student._id%>" class="btn btn-warning w-75">EDIT</a></td>
+                            <th>Roll No</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Father's Name</th>
+                            <th>Aadhar Card</th>
+                            <th>Mobile No</th>
+                            <th>Actions</th>
 
                         </tr>
-                    <% }) %>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <% students.forEach((student)=> { %>
+                            <tr>
+                                <td>
+                                    <%= student.rollNo %>
+                                </td>
+                                <td>
+                                    <%= student.firstName %>
+                                </td>
+                                <td>
+                                    <%= student.lastName %>
+                                </td>
+                                <td>
+                                    <%= student.fatherName %>
+                                </td>
+                                <td>
+                                    <%= student.adharCardNo %>
+                                </td>
+                                <td>
+                                    <%= student.mobileNo %>
+                                </td>
+                                <td><a href="/edit/student/page/<%= student._id%>"
+                                        class="btn btn-warning w-auto">EDIT</a>
+                                    <a href="/delete/student/<%= student._id%>" class="btn btn-danger w-auto">DELETE</a>
 
-        <!-- Optional Dynamic Button -->
-        <!-- <div class="text-center mt-4">
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Optional Dynamic Button -->
+            <!-- <div class="text-center mt-4">
             <button class="btn-modern">Add New Student</button>
         </div> -->
+        </div>
     </div>
-</div>
 
-<%- include('./base/footer.ejs') %>
+    <%- include('./base/footer.ejs') %>
